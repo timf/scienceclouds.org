@@ -5,7 +5,7 @@
 
   <head>
 
-  <title><?php if (is_single()) : ?><?php the_title(); ?> - *.org<?php else : ?><?php bloginfo('name'); ?> - *.org<?php endif; ?></title>
+  <title><?php if (is_single()) : ?>Science Clouds: <?php the_title(); ?><?php else : ?><?php bloginfo('name'); ?>: on demand infrastructure for scientific communities<?php endif; ?></title>
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="EN" />
@@ -30,7 +30,7 @@
     
       <h1>
       <a id="top"></a>
-      <a href="http://*.org/"><?php bloginfo('name'); ?></a>
+      <a href="http://scienceclouds.org/"><?php bloginfo('name'); ?></a>
       </h1>
       
       <h2><?php bloginfo('description'); ?></h2>
@@ -45,21 +45,7 @@
 <div id="navigation">
 
     <?php $curtaken = 0 ?>
-  
-    <span class="navuhli"<?php 
-      if (is_page('Top')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/"> Home </a>
-    </span>
-      
+    
     <span class="navuhli"<?php 
       if (is_home() || is_single()) 
       { 
@@ -71,106 +57,107 @@
         echo ">";
       }
       ?>
-      <a href="/virtualization/articles/" title="Articles"> Articles </a>
-    </span>
-    
-    <span class="navuhli"<?php 
-      if (is_page('Case Studies')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/case-studies/" title="Case Studies"> Case Studies </a>
-    </span>
-    
-    <span class="navuhli"<?php 
-      if (is_page('Images')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/images/" title="Images"> Images </a>
-    </span>
-    
-    <span class="navuhli"<?php 
-      if (is_page('Security')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/security/" title="Security"> security </a>
-    </span>
-    
-    <span class="navuhli"<?php 
-      if (is_page('Networking')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/networking/" title="Networking"> Networking </a>
-    </span>
-    
-    <span class="navuhli"<?php 
-      if (is_page('Performance')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/performance/" title="Performance"> Performance </a>
-    </span>
-    
-    <span class="navuhli"<?php 
-      if (is_page('Middleware and Tools')) 
-      { 
-      echo " id=\"current\">";
-      $curtaken = 1
-      ?>
-      <?php 
-      } else {
-        echo ">";
-      }
-      ?>
-      <a href="/virtualization/middleware-and-tools/" title="Middleware and Tools"> Software </a>
+      <a href="/" title="Home"> Home </a>
     </span>
   
-  
-    <?php if (is_page('General')) : ?>
-    
-    <span class="navuhli" id="current">
-    
-    <?php else : ?>
-    
-    <span class="navuhli">
-    
-	  <?php endif; ?>
-    
-    <a href="/virtualization/general/" title="General">General</a>
+    <span class="navuhli"<?php 
+      if (is_page('About')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/about/" title="About"> About </a>
     </span>
+    
+    <span class="navuhli"<?php 
+      if (is_page('Marketplace')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/marketplace/" title="Marketplace"> Marketplace </a>
+    </span>
+    
+    <span class="navuhli"<?php 
+      if (is_page('Quickstart')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/quickstart/" title="Quickstart"> Quickstart </a>
+    </span>
+    
+    <span class="navuhli"<?php 
+      if (is_page('Clusters')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/clusters/" title="Clusters"> Clusters </a>
+    </span>
+    
+    <span class="navuhli"<?php 
+      if (is_page('Cluster Guide')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/cluster/" title="Cluster Guide"> Cluster Guide </a>
+    </span>
+    
+    <span class="navuhli"<?php 
+      if (is_page('Multi Cloud')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/multicloud/" title="Multi Cloud"> Multi Cloud </a>
+    </span>
+    
+    <span class="navuhli"<?php 
+      if (is_page('Appendix')) 
+      { 
+      echo " id=\"current\">";
+      $curtaken = 1
+      ?>
+      <?php 
+      } else {
+        echo ">";
+      }
+      ?>
+      <a href="/appendix/" title="Appendix"> Appendix </a>
+    </span>
+  
 </div>
 
 
