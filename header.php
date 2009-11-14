@@ -40,14 +40,19 @@
 
 <div class="menu">
    <ul>
-   <li<?php if ( is_front_page() ) echo ' class="current_page_item"'; ?>><a href="http://www.scienceclouds.org"><span>Home</span></a></li>
-<?php $pages = wp_list_pages('sort_column=menu_order&title_li=&echo=0');
-$pages = preg_replace('%<a ([^>]+)>%U','<a $1><span>', $pages);
-$pages = str_replace('</a>','</span></a>', $pages);
-echo $pages; ?>
+     <li class="current_page_item"><a href="http://www.scienceclouds.org"><span>Home</span></a></li>
+    <li class="page_item page-item-2"><a href="http://www.scienceclouds.org/about/" title="About"><span>About</span></a></li>
+    <li class="page_item page-item-24"><a href="http://www.scienceclouds.org/marketplace/" title="Marketplace"><span>Marketplace</span></a></li>
+    <li class="page_item page-item-26"><a href="http://www.scienceclouds.org/quickstart/" title="Quickstart"><span>Quickstart</span></a></li>
+    <li class="page_item page-item-28"><a href="http://www.scienceclouds.org/clusters/" title="Clusters"><span>Clusters</span></a></li>
+    <li class="page_item page-item-30"><a href="http://www.scienceclouds.org/cluster-guide/" title="Cluster Guide"><span>Cluster Guide</span></a></li>
+    <li class="page_item page-item-32"><a href="http://www.scienceclouds.org/multi-cloud/" title="Multi-Cloud"><span>Multi-Cloud</span></a></li>
+    <li class="page_item page-item-34"><a href="http://www.scienceclouds.org/appendix/" title="Appendix"><span>Appendix</span></a></li>
   </ul>
-<? unset($pages); ?> 
 </div>
+ 
+
+
  
 
 <!-- Start Container -->
