@@ -292,5 +292,24 @@ h1, h2, h3, h4 { font-family: Arial, Helvetica, sans-serif; }
 #starthere a:active { text-decoration: underline; color : #ffcc66; border: 0px;}
 #starthere a:visited { text-decoration: underline; color : #ffcc66; border: 0px;}
 #starthere a:hover	{ text-decoration: underline; color : #fff; border: 2px; background: #ffcc66; }
-#starthere a:focus { outline: underline;}
+#starthere a:focus { outline: underline; }
+
+.namelink { font-style: italic; }
+.namelink a { color: white; text-decoration:none; }
+.namelink a:visited { color: white; }
+.namelink a:hover { color: gray; }
+.indent { margin-left: 2em; }
+
+/* for transcripts of terminal sessions */
+.screen {
+    font-family: monospace;
+    background-color: #eee;
+    border: thin solid black;
+    padding: 0.7em;
+    margin-top: 0.5em;
+    margin-bottom: 1.1em;
+    font-size: 1em;
+    white-space: nowrap; /* avoid accidental newlines in divs */
 }
+
+
