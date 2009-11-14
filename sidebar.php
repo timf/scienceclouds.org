@@ -18,22 +18,11 @@
 
 <!-- Start About This Blog -->
 <div class="about">
-<h3>About this blog</h3>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque sed felis. Aliquam sit amet felis. Mauris semper, velit semper laoreet dictum, quam diam dictum urna, nec placerat elit nisl in quam. Etiam augue pede, molestie eget, rhoncus at, convallis ut, eros. Aliquam pharetra.</p>
+<h3>About</h3>
+<p><b>A community driven website devoted to on demand infrastructure for scientific communities. New? <span id="starthere"><a href="/about/">Start here!</a></span></b>
+</p>
 </div>
 <!-- End About This Blog -->
-
-
-<div class="photostream">
-<h3>Photostream</h3>
-<!-- Start Flickr Photostream -->
-<?php if (function_exists('get_flickrrss')) { ?>
-  <ul>
-   <?php get_flickrrss(); ?> 
-  </ul>
-<?php } ?>
-<!-- End Flickr Photostream -->
-</div>
 
 
 <div class="categs">
@@ -51,27 +40,13 @@
 	</div>
 </div>
 
-
 <!-- Start Recent Comments/Articles -->
-<div class="recent">
- <ul class="tabs">
-  <li><a class="active" href="#tab-comments">Recent Comments</a></li>
-  <li><a href="#tab-posts">Recent Posts</a></li>
-  <li><a style="margin-right:0px;" href="#tab-tags">Tags</a></li>
- </ul>
- <ul id="tab-comments">
-  <?php dp_recent_comments(5); ?>
- </ul> 
- <ul id="tab-posts">
- <?php $posts = get_posts("numberposts=10&orderby=post_date&order=DESC"); foreach($posts as $post) : ?>	
-  <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
- <?php endforeach; ?>
- </ul>
- <div id="tab-tags">
-  <?php wp_tag_cloud(''); ?>
- </div>
-</div>
+
+<!-- timf: check back on this part when there are comments -->
+
 <!-- End Recent Comments/Articles -->
+
+
 
 
 <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar(1) ) : else : ?>

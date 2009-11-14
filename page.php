@@ -12,7 +12,7 @@
 <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
 </div>
 
-<?php if ( comments_open() ) comments_template(); ?>
+
 <?php endwhile; endif; ?>
 <?php edit_post_link('Edit this entry.', '<p class="edit">', '</p>'); ?>
 
