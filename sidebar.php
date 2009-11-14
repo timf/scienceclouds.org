@@ -16,8 +16,8 @@ $rss2_url = str_replace('press.mcs.anl.gov/virtualization','www.scienceclouds.or
 $comments_rss2_url = str_replace('press.mcs.anl.gov/virtualization','www.scienceclouds.org', get_bloginfo('comments_rss2_url'));
  ?>
  
-  <li><a href="<?php echo $rss2_url ?>">Entries</a> (RSS)</li>
-  <li><a href="<?php echo $comments_rss2_url ?>">Comments</a> (RSS)</li>
+  <li><a href="<?php echo $rss2_url ?>">Entries (RSS)</a></li>
+  <li><a href="<?php echo $comments_rss2_url ?>">Comments (RSS)</a></li>
   
 <?php unset($rss2_url); unset($comments_rss2_url); ?> 
   
