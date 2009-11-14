@@ -9,8 +9,18 @@
   </form>
 <div class="syn">
  <ul>
-  <li><a href="<?php bloginfo('rss2_url'); ?>">Entries</a> (RSS)</li>
-  <li><a href="<?php bloginfo('comments_rss2_url'); ?>">Comments</a> (RSS)</li>
+ 
+ <?php 
+# yeeha
+$rss2_url = str_replace('press.mcs.anl.gov/virtualization','www.scienceclouds.org', get_bloginfo('rss2_url'));
+$comments_rss2_url = str_replace('press.mcs.anl.gov/virtualization','www.scienceclouds.org', get_bloginfo('comments_rss2_url'));
+ ?>
+ 
+  <li><a href="<?php echo $rss2_url ?>">Entries</a> (RSS)</li>
+  <li><a href="<?php echo $comments_rss2_url ?>">Comments</a> (RSS)</li>
+  
+<?php unset($rss2_url); unset($comments_rss2_url); ?> 
+  
  </ul>
 </div>
 </div>
@@ -18,8 +28,7 @@
 
 <!-- Start About This Blog -->
 <div class="about">
-<h3>About</h3>
-<p><b>A community driven website devoted to on demand infrastructure for scientific communities. New? <span id="starthere"><a href="/about/">Start here!</a></span></b>
+<p><b>Science Clouds is a community devoted to on-demand infrastructure for scientific applications and communities.</b></p><p><b>Are you new? <span id="starthere"><a href="/about/">Start here!</a></span></b>
 </p>
 </div>
 <!-- End About This Blog -->
