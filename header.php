@@ -45,14 +45,7 @@
 		<span><?php bloginfo('description'); ?></span>
     </div>
 	<div id="header_right">
-		<div id="main_search">
-			<form method="get" id="searchform_top" action="<?php bloginfo('url'); ?>/">
-				<div>
-					<input type="text" value="Type your search here..." name="s" id="searchform_top_text" onclick="this.value='';" />
-					<input type="image" src="<?php bloginfo('template_url')?>/images/button_go.gif" id="gosearch" />
-				</div>
-			</form>
-		</div>
+		
     </div>
 </div>
 

@@ -18,7 +18,7 @@
 				<?php wp_get_archives('type=monthly'); ?>
 				</ul>
 			</li>
-            
+			
 			<?php wp_list_bookmarks('title_li=Partner Links&categorize=0'); ?>
             
 		<?php } ?>
