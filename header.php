@@ -30,7 +30,8 @@
 <div id="page">
 
 <div id="menu">
-	<div id="top_rss"><a href="<?php bloginfo('rss2_url'); ?>" title="Rss"><img src="<?php bloginfo('template_url')?>/images/rss.png" alt="<?php bloginfo('name'); ?> Rss" /></a></div>
+    <!-- rss beaker image courtesy: http://www.freesocialicons.com/free-lab-experiment-social-icon-set/ -->
+	<div id="top_rss"><a href="<?php bloginfo('rss2_url'); ?>" title="Rss"><img src="<?php bloginfo('template_url')?>/images/rss-science.jpg" alt="<?php bloginfo('name'); ?> Rss" /></a></div>
 	<div id="mainmenu">
 		<ul>
 			<li class="first <? if(is_home()) echo 'current_page_item'; ?>"><a href="<?php echo get_option('home'); ?>/">Home</a></li>
