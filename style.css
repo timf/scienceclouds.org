@@ -106,7 +106,7 @@ body{
 }
 #mainmenu ul li a:hover, #mainmenu .current_page_item a, #mainmenu .select a{
 	color:#fff;
-	background:#9d0d12;
+	background:#5c7182;
 	text-decoration:none;
 }
 /*1st sub level menu*/
@@ -136,7 +136,7 @@ body{
 	height:auto;
 	padding: 7px 5px 7px 10px;
 	margin: 0;
-	background:#9d0d12;
+	background:#5c7182;
 	border-top-width: 0;
 	text-align:left;
 	text-decoration:none;
