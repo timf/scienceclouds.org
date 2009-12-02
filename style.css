@@ -193,7 +193,6 @@ body{
 #main_search{
 	width:307px;
 	height:46px;
-	background:url(images/bgr_main_search.png) no-repeat;
 	float:right;
 }
 
@@ -283,7 +282,6 @@ body{
 	font-weight:normal;
 	font-family:Tahoma, Geneva, sans-serif;
 	float:left;
-	background:url(images/bgr_post_comment.png) no-repeat;
 	margin:0 0 5px 0;
 }
 
