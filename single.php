@@ -6,7 +6,8 @@
 
 <div class="p-head">
 <h1><?php the_title(); ?></h1>
-<p class="p-cat">In: <?php the_category('|') ?></p>
+<p class="p-author">By: <?php the_author() ?></p>
+<p class="p-cat">Filed in: <?php the_category('|') ?></p>
 <small class="p-time">
 <strong class="day"><?php the_time('j') ?></strong>
 <strong class="month"><?php the_time('M') ?></strong>

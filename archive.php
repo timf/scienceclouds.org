@@ -27,7 +27,8 @@
 
 <div class="p-head">
 <h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-<p class="p-cat">In: <?php the_category('|') ?></p>
+<p class="p-author">By: <?php the_author() ?></p>
+<p class="p-cat">Filed in: <?php the_category('|') ?></p>
 <small class="p-time">
 <strong class="day"><?php the_time('j') ?></strong>
 <strong class="month"><?php the_time('M') ?></strong>
