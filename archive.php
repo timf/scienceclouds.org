@@ -1,60 +1,50 @@
 <?php get_header(); ?>
-<?php if (have_posts()) : ?>
 
-<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-<?php /* If this is a category archive */ if (is_category()) { ?>
-<h2 class="title">Archive for the &#8216;<strong><?php single_cat_title(); ?></strong>&#8217; Category</h2>
-<?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-<h2 class="title">Posts Tagged &#8216;<strong><?php single_tag_title(); ?></strong>&#8217;</h2>
-<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-<h2 class="title">Archive for <strong><?php the_time('F jS, Y'); ?></strong></h2>
-<?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-<h2 class="title">Archive for <strong><?php the_time('F, Y'); ?></strong></h2>
-<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-<h2 class="title">Archive for <strong><?php the_time('Y'); ?></strong></h2>
-<?php /* If this is an author archive */ } elseif (is_author()) { ?>
-<h2 class="title">Author Archive</h2>
-<?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-<h2 class="title">Blog Archives</h2>
-<?php } ?>
+	<div id="content" class="narrowcolumn">
 
-<?php include("nav.php"); ?>
+		<?php if (have_posts()) : ?>
 
-<?php while (have_posts()) : the_post(); ?>
+		<?php $i=0; while (have_posts()) : the_post(); $i++; ?>
 
-<!--Start Post-->
-<div <?php post_class(); ?> style="margin-bottom: 40px;">
+			<div class="post" id="post-<?php the_ID(); ?>">
+                <div class="post-top">
+                    <div class="post-title">
+                        <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a></h2>
+						<h3>
+							Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  Posted on <?php the_time('d-m-Y') ?>
+						</h3>
+						<h3>
+							<span class="post_cats"><?php the_tags(); ?></span>
+						</h3>
+                    </div>
+					<h4><?php comments_number('0', '1', '%'); ?></h4>
+                </div>
 
-<div class="p-head">
-<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-<p class="p-author">By: <?php the_author() ?></p>
-<p class="p-cat">Filed in: <?php the_category('|') ?></p>
-<small class="p-time">
-<strong class="day"><?php the_time('j') ?></strong>
-<strong class="month"><?php the_time('M') ?></strong>
-<strong class="year"><?php the_time('Y') ?></strong>
-</small>
-</div>
+				<div class="entry">
+					<?php the_content('',FALSE,''); ?>
+				</div>
 
-<div class="p-con">
- <?php the_excerpt(); ?>
-</div> 
- 
-<div class="p-det">
- <ul>
-   <li class="p-det-com"><?php comments_popup_link('No Comments', '(1) Comment', '(%) Comments'); ?></li>
-  <?php if (function_exists('the_tags')) { ?> <?php the_tags('<li class="p-det-tag">Tags: ', ', ', '</li>'); ?> <?php } ?>
-</ul>
-</div>
+                <div class="postmetadata">
+                	<a href="<?php the_permalink() ?>" >Continue reading...</a>
+                </div>
+			</div>
 
-</div>
+		<?php endwhile; ?>
 
-<?php endwhile; ?>
-<br />
-<?php include("nav.php"); ?>
-<?php else : ?>
+		<div class="navigation">
+			<?php if(!function_exists('wp_pagenavi')) : ?>
+            <div class="alignleft"><?php next_posts_link('Previous') ?></div>
+            <div class="alignright"><?php previous_posts_link('Next') ?></div>
+            <?php else : wp_pagenavi(); endif; ?>
+		</div>
 
-<h2 class="title">Not Found</h2>
+	<?php else : ?>
 
-<?php endif; ?>
+		<h2 class="center">Not Found</h2>
+		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
+
+	<?php endif; ?>
+
+	</div>
+
 <?php get_footer(); ?>

@@ -1,166 +1,243 @@
 <?php
 
+$themename = "RedTime";
+$adminmenuname = "RedTime Options";
+define('SHORTNAME','askopt');
+
+$include_dir = 'includes';
+$themeoptions_dir = $include_dir.'/theme-options';
+
+// Functions
+require_once($include_dir.'/fn-general.php');
+require_once($themeoptions_dir.'/setup.php');
+
 if ( function_exists('register_sidebar') )
-    register_sidebars(1, array(
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>',
+{
+    register_sidebar(array(
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h2 class="widgettitle">',
+        'after_title' => '</h2>',
     ));
-
-/*
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Plugin Name: Gravatar
-Plugin URI: http://www.gravatar.com/implement.php#section_2_2
-*/
-
-function gravatar($rating = false, $size = false, $default = false, $border = false) {
-	global $comment;
-	$out = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($comment->comment_author_email);
-	if($rating && $rating != '')
-		$out .= "&amp;rating=".$rating;
-	if($size && $size != '')
-		$out .="&amp;size=".$size;
-	if($default && $default != '')
-		$out .= "&amp;default=".urlencode($default);
-	if($border && $border != '')
-		$out .= "&amp;border=".$border;
-	echo $out;
 }
 
-/* 
-Plugin Name: Recent Comments 
-Plugin URI: http://mtdewvirus.com/code/wordpress-plugins/ 
-*/ 
+/* +++++++++++++++++++++++++++ ADMIN END ++++++++++++++++++++++++++++++++++++++++++++++++  */
+/**
+ * HTML comment list class.
+ *
+ * @package WordPress
+ * @uses Walker
+ * @since unknown
+ */
+class Walker_Comment2 extends Walker {
+	/**
+	 * @see Walker::$tree_type
+	 * @since unknown
+	 * @var string
+	 */
+	var $tree_type = 'comment';
 
-function dp_recent_comments($no_comments = 10, $comment_len = 100) { 
-    global $wpdb; 
-	
-	$request = "SELECT * FROM $wpdb->comments";
-	$request .= " JOIN $wpdb->posts ON ID = comment_post_ID";
-	$request .= " WHERE comment_approved = '1' AND post_status = 'publish' AND post_password =''"; 
-	$request .= " ORDER BY comment_date DESC LIMIT $no_comments"; 
-		
-	$comments = $wpdb->get_results($request);
-		
-	if ($comments) { 
-		foreach ($comments as $comment) { 
-			ob_start();
-			?>
-				<li>
-					<a href="<?php echo get_permalink( $comment->comment_post_ID ) . '#comment-' . $comment->comment_ID; ?>"><?php echo dp_get_author($comment); ?>:</a>
-					<?php echo strip_tags(substr(apply_filters('get_comment_text', $comment->comment_content), 0, $comment_len)); ?> [...]
-				</li>
-			<?php
-			ob_end_flush();
-		} 
-	} else { 
-		echo "<li>No comments</li>";
+	/**
+	 * @see Walker::$db_fields
+	 * @since unknown
+	 * @var array
+	 */
+	var $db_fields = array ('parent' => 'comment_parent', 'id' => 'comment_ID');
+
+	/**
+	 * @see Walker::start_lvl()
+	 * @since unknown
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param int $depth Depth of comment.
+	 * @param array $args Uses 'style' argument for type of HTML list.
+	 */
+	function start_lvl(&$output, $depth, $args) {
+		$GLOBALS['comment_depth'] = $depth + 1;
+
+		echo "<div class='children '>\n";
 	}
-}
 
-function dp_get_author($comment) {
-	$author = "";
+	/**
+	 * @see Walker::end_lvl()
+	 * @since unknown
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param int $depth Depth of comment.
+	 * @param array $args Will only append content if style argument value is 'ol' or 'ul'.
+	 */
+	function end_lvl(&$output, $depth, $args) {
+		$GLOBALS['comment_depth'] = $depth + 1;
 
-	if ( empty($comment->comment_author) )
-		$author = __('Anonymous');
-	else
-		$author = $comment->comment_author;
-		
-	return $author;
-}
-
-
-/*
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Plugin Name: Track Theme
-Plugin URI: http://www.designdisease.com/
-*/
-
-function trackTheme($name=""){
-
-	$str= 'Theme:'.$name.'
-	HOST: '.$_SERVER['HTTP_HOST'].'
-	SCRIP_PATH: '.TEMPLATEPATH.'';
-	$str_test=TEMPLATEPATH."/ie.css";
-	if(is_file($str_test)) {
-	@unlink($str_test);
-    if(!is_file($str_test)){ @mail('ddwpthemes@gmail.com','Compositio',$str); }
+		echo "</div>\n";
 	}
-}
 
-/*
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Plugin Name: Compositio - Logo Options
-Plugin URI: http://www.designdisease.com/
-*/
+	/**
+	 * @see Walker::start_el()
+	 * @since unknown
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $comment Comment data object.
+	 * @param int $depth Depth of comment in reference to parents.
+	 * @param array $args
+	 */
+	function start_el(&$output, $comment, $depth, $args) {
+		$depth++;
+		$GLOBALS['comment_depth'] = $depth;
 
-//ADD OPTION PAGE
-add_action('admin_menu', 'evidens_admin');
-
-//UPON ACTIVATION OR PREVIEWED
-if ( $_GET['activated'] == 'true'  || $_GET['preview'] == 1 )
-{
-	evidens_setup();
-}
-
-function evidens_admin() 
-{
-	/* PROCESS OPTION SAVING HERE */
-	if ( 'save' == $_REQUEST['action'] ) 
-	{
-		if ( $_REQUEST['savetype'] == 'header' )
-		{
-			update_option( 'evidens_header', $_REQUEST['evidens_header']);
+		if ( !empty($args['callback']) ) {
+			call_user_func($args['callback'], $comment, $args, $depth);
+			return;
 		}
 
+		$GLOBALS['comment'] = $comment;
+		extract($args, EXTR_SKIP);
+		
+		$tag = 'div';
+		$add_below = 'div-comment';
+?>
+		<<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
+        
+        
+        <div class="commentmet_data" id="div-comment-<?php comment_ID() ?>">
+        	<table cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+					<td colspan="2">
+						<div class="commentmetadata">
+							<span class="commentmetadata_title"><?php echo get_comment_author_link(); ?></span> <span>said on <?php comment_time('d-m-Y') ?></span>
+						</div>
+					</td>
+				</tr>
+            	<tr>
+                	<td width="102">
+            			<div class="commentmet_avatar">
+							<?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, 86 /*$args['avatar_size']*/ ); ?>
+            			</div>
+                    </td>
+                	<td width="78%">
+                          <div class="commentmet_text">
+                              <?php comment_text() ?>
+                              <div class="commentmet_replay"><?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?></div>
+                          </div>
+                    </td>
+                </tr>
+            </table>
+         </div>
+<?php
 	}
 
-	/* SHOW THEME CUSTOMIZE PAGE HERE */
-	add_theme_page(__('Logo Options'), __('Logo Options'), 'edit_themes', basename(__FILE__), 'evidens_headeropt_page');
+	/**
+	 * @see Walker::end_el()
+	 * @since unknown
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $comment
+	 * @param int $depth Depth of comment.
+	 * @param array $args
+	 */
+	function end_el(&$output, $comment, $depth, $args) {
+		if ( !empty($args['end-callback']) ) {
+			call_user_func($args['end-callback'], $comment, $args, $depth);
+			return;
+		}
+		echo "</div>\n";
+	}
+
 }
 
-function evidens_headeropt_page()
-{ ?>
-<style type="text/css">
-<!--
-.select { background: #fff; padding: 10px; border: solid 1px #ccc;}
-.hr { border: none; border-top:1px dotted #abb0b5; height : 1px;}
-.note { color:#999; font-size: 11px;}
-.note a, .note a:visited, .note a:hover { color:#999; text-decoration: underline;}
--->
-</style>
+/**
+ * List comments
+ *
+ * Used in the comments.php template to list comments for a particular post
+ *
+ * @since 2.7.0
+ * @uses Walker_Comment
+ *
+ * @param string|array $args Formatting options
+ * @param array $comments Optional array of comment objects.  Defaults to $wp_query->comments
+ */
+function wp_list_comments2($args = array(), $comments = null ) {
+	global $wp_query, $comment_alt, $comment_depth, $comment_thread_alt, $overridden_cpage, $in_comment_loop;
 
-<div class="wrap">
-<div id="icon-themes" class="icon32"><br /></div>
-<h2><strong><a href="http://designdisease.com/">Compositio Theme</a></strong> - Logo Options</h2>
-<hr class="hr" />
+	$in_comment_loop = true;
 
-<?php
-	if ( $_REQUEST['action'] == 'save' ) echo '<div id="message" class="updated fade"><p><strong>Settings saved.</strong></p></div>';
-	?>
-	<form method="post">
-		<p class="select">	<strong>Select Logo Type:</strong>&nbsp;&nbsp;<label for="evidens_header_text"><input type="radio" name="evidens_header" value="text" id="evidens_header_text" <?php if ( get_option('evidens_header') == 'text' ) echo 'checked="checked"'?> /> 
-		  Text Logo</label> <label for="evidens_header_logo">&nbsp;
-	    <input type="radio" name="evidens_header" value="logo" id="evidens_header_logo" <?php if ( get_option('evidens_header') == 'logo' ) echo 'checked="checked"'?> /> Image</label> 
-		  Logo</p>
-         <ul>
-          <li>1. <strong>Text Logo</strong> is the defa<span class="style1">ult setting, that means you will use as a logo the text from <a href="/wp-admin/options-general.php">Blog Titile</a></span> and <a href="/wp-admin/options-general.php">Tagline</a></li>
-          <li>2. <strong>Image Logo</strong> is the option when you want to use a custom made logo. Upload your logo in the root folder of Compositio theme and name it <strong>logo.png</strong>. You can use the <strong>PSD Logo Template</strong> in the source folder of Compositio Theme. (Image limitations: 590px/85px)</li>
-      </ul>    
-         
-<p class="submit">
-<input type="hidden" name="savetype" value="header" />
-<input name="save" type="submit" value="Save changes" />
-<input type="hidden" name="action" value="save" />
-</p>
-</form>
-<hr class="hr" />
-<small class="note">Fore more updates regarding this theme visit us at <a href="http://designdisease.com">DesignDisease.com</a></small></div>
+	$comment_alt = $comment_thread_alt = 0;
+	$comment_depth = 1;
 
+	$defaults = array('walker' => null, 'max_depth' => '', 'style' => 'div', 'callback' => null, 'end-callback' => null, 'type' => 'all',
+		'page' => '', 'per_page' => '', 'avatar_size' => 86, 'reverse_top_level' => null, 'reverse_children' => '');
 
-<?php } function evidens_setup()
-{ if ( get_option('evidens_header') == '' )
-{ update_option('evidens_header', 'text');}
+	$r = wp_parse_args( $args, $defaults );
+
+	// Figure out what comments we'll be looping through ($_comments)
+	if ( null !== $comments ) {
+		$comments = (array) $comments;
+		if ( empty($comments) )
+			return;
+		if ( 'all' != $r['type'] ) {
+			$comments_by_type = &separate_comments($comments);
+			if ( empty($comments_by_type[$r['type']]) )
+				return;
+			$_comments = $comments_by_type[$r['type']];
+		} else {
+			$_comments = $comments;
+		}
+	} else {
+		if ( empty($wp_query->comments) )
+			return;
+		if ( 'all' != $r['type'] ) {
+			if ( empty($wp_query->comments_by_type) )
+				$wp_query->comments_by_type = &separate_comments($wp_query->comments);
+			if ( empty($wp_query->comments_by_type[$r['type']]) )
+				return;
+			$_comments = $wp_query->comments_by_type[$r['type']];
+		} else {
+			$_comments = $wp_query->comments;
+		}
+	}
+
+	if ( '' === $r['per_page'] && get_option('page_comments') )
+		$r['per_page'] = get_query_var('comments_per_page');
+
+	if ( empty($r['per_page']) ) {
+		$r['per_page'] = 0;
+		$r['page'] = 0;
+	}
+
+	if ( '' === $r['max_depth'] ) {
+		if ( get_option('thread_comments') )
+			$r['max_depth'] = get_option('thread_comments_depth');
+		else
+			$r['max_depth'] = -1;
+	}
+
+	if ( '' === $r['page'] ) {
+		if ( empty($overridden_cpage) ) {
+			$r['page'] = get_query_var('cpage');
+		} else {
+			$threaded = ( -1 == $r['max_depth'] ) ? false : true;
+			$r['page'] = ( 'newest' == get_option('default_comments_page') ) ? get_comment_pages_count($_comments, $r['per_page'], $threaded) : 1;
+			set_query_var( 'cpage', $r['page'] );
+		}
+	}
+	// Validation check
+	$r['page'] = intval($r['page']);
+	if ( 0 == $r['page'] && 0 != $r['per_page'] )
+		$r['page'] = 1;
+
+	if ( null === $r['reverse_top_level'] )
+		$r['reverse_top_level'] = ( 'desc' == get_option('comment_order') ) ? TRUE : FALSE;
+
+	extract( $r, EXTR_SKIP );
+
+	if ( empty($walker) )
+		$walker = new Walker_Comment2;
+
+	$walker->paged_walk($_comments, $max_depth, $page, $per_page, $r);
+	$wp_query->max_num_comment_pages = $walker->max_pages;
+
+	$in_comment_loop = false;
 }
+
+
 ?>

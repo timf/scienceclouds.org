@@ -1,43 +1,47 @@
 <?php get_header(); ?>
 
+	<div id="content" class="narrowcolumn">
 
-<?php if (have_posts()) : ?>
-<h2 class="title"><strong>Search Results</strong></h2>
+	<?php if (have_posts()) :  ?>
 
-<?php include("nav.php"); ?>
+		<?php $i=0; while (have_posts()) : the_post(); $i++; ?>
 
-<?php while (have_posts()) : the_post(); ?>
-<div <?php post_class(); ?> style="margin-bottom: 40px;" id="post-<?php the_ID(); ?>">
+			<div class="post" id="post-<?php the_ID(); ?>">
+                <div class="post-top">
+                    <div class="post-title">
+                        <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a></h2>
+						<h3>
+							Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  Posted on <?php the_time('d-m-Y') ?>
+						</h3>
+                    </div>
+					<h4><?php comments_number('0', '1', '%'); ?></h4>
+                </div>
 
-<div class="p-head">
-<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-<p class="p-cat">In: <?php the_category('|') ?></p>
-<small class="p-time">
-<strong class="day"><?php the_time('j') ?></strong>
-<strong class="month"><?php the_time('M') ?></strong>
-<strong class="year"><?php the_time('Y') ?></strong>
-</small>
-</div>
+				<div class="entry">
+					<?php the_content('Read the rest of this entry &raquo;'); ?>
+				</div>
 
-<div class="p-con">
-<?php the_excerpt() ?>
-</div>
+                <div class="postmetadata">
+                	<a href="<?php the_permalink() ?>" >Continue reading...</a>
+                </div>
+			</div>
 
-<div class="p-det">
- <ul>
-   <li class="p-det-com"><?php comments_popup_link('No Comments', '(1) Comment', '(%) Comments'); ?></li>
-  <?php if (function_exists('the_tags')) { ?> <?php the_tags('<li class="p-det-tag">Tags: ', ', ', '</li>'); ?> <?php } ?>
-</ul>
-</div>
+		<?php endwhile; ?>
 
-</div>
+		<div class="navigation">
+			<?php if(!function_exists('wp_pagenavi')) : ?>
+            <div class="alignleft"><?php next_posts_link('Previous') ?></div>
+            <div class="alignright"><?php previous_posts_link('Next') ?></div>
+            <?php else : wp_pagenavi(); endif; ?>
+		</div>
 
-<?php endwhile; ?>
-<br />
-<?php include("nav.php"); ?>
-<?php else : ?>
+	<?php else : ?>
 
-<h2 class="title">Not Found</h2>
+		<h2 class="center">No posts found. Try a different search?</h2>
+		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 
-<?php endif; ?>
+	<?php endif; ?>
+
+	</div>
+
 <?php get_footer(); ?>

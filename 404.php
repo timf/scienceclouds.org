@@ -1,18 +1,9 @@
 <?php get_header(); ?>
-<!-- Container -->
-<div class="CON">
 
-<!-- Start SC -->
-<div class="SC">
+	<div id="content" class="narrowcolumn">
 
-<h2 class="title">Error 404</h2>
-<p> Page Not Found</p>
+		<h2 class="center">Error 404 - Not Found</h2>
 
-</div>
-<!-- End SC -->
-
-<?php get_sidebar(); ?>
-</div>
-<!-- End CON -->
+	</div>
 
 <?php get_footer(); ?>

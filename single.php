@@ -1,40 +1,36 @@
 <?php get_header(); ?>
-<?php if (have_posts()) : ?>
-<?php while (have_posts()) : the_post(); ?>
 
-<div <?php post_class(); ?> id="post-<?php the_ID(); ?>" style="margin-bottom: 30px;">
+	<div id="content" class="narrowcolumn">
 
-<div class="p-head">
-<h1><?php the_title(); ?></h1>
-<p class="p-author">By: <?php the_author() ?></p>
-<p class="p-cat">Filed in: <?php the_category('|') ?></p>
-<small class="p-time">
-<strong class="day"><?php the_time('j') ?></strong>
-<strong class="month"><?php the_time('M') ?></strong>
-<strong class="year"><?php the_time('Y') ?></strong>
-</small>
-</div>
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-<div class="p-con">
-<?php the_content('Read the rest of this entry &raquo;'); ?>
-<?php wp_link_pages(); ?>
-<?php edit_post_link('Edit this entry.', '<p class="edit">', '</p>'); ?>
-</div>
+			<div class="post" id="post-<?php the_ID(); ?>">
+                <div class="post-top">
+                    <div class="post-title">
+                        <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a></h2>
+						<h3>
+							Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  Posted on <?php the_time('d-m-Y') ?>
+						</h3>
+						<h3>
+							<span class="post_cats"><?php the_tags(); ?></span>
+						</h3>
+                    </div>
+					<h4><?php comments_number('0', '1', '%'); ?></h4>
+                </div>
 
- <?php if (function_exists('the_tags')) { ?> <?php the_tags('<div class="p-det"><ul><li class="p-det-tag">Tags: ', ', ', '</li></ul></div>'); ?> <?php } ?>
+				<div class="entry">
+					<?php the_content('',FALSE,''); ?>
+				</div>
+			</div>
 
+	<?php comments_template(); ?>
 
+	<?php endwhile; else: ?>
 
-</div>	
+		<p>Sorry, no posts matched your criteria.</p>
 
-
-<?php comments_template(); ?>
-				
-<?php endwhile; ?>
-<?php include("nav.php"); ?>
-<?php else : ?>
-
-<?php include("404.php"); ?>
 <?php endif; ?>
+
+	</div>
 
 <?php get_footer(); ?>

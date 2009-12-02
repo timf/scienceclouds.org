@@ -1,27 +1,38 @@
-</div></div>
-<?php get_sidebar(); ?>
-<!-- Container -->
 
+            
+        </div>
+    </div>
 
-</div></div>
-<!-- End BG -->
+	<div id="body_right">
+    	<div id="body_right_content">
+            
+            <div id="sidebars">
+                <?php get_sidebar(); ?>
+            </div>
+            
+        </div>
+    </div>
 
-<div class="footer">
-<p>
-    <span class="copy">Content copyright &copy; 2009 - University of Chicago</span> - 
-    <span class="theme">Compositio Theme is created by: <a href="http://designdisease.com/" title="Professional Blog Design">Design Disease</a></span>
-</p> 
 </div>
 
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-11625931-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+<div id="footer">
+	<div id="footer_title">
+        <h2>
+            <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
+        </h2>
+    </div>
+	<div id="footer_text">
+    	<p>&copy; All Rights Reserved. <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a> | Powered by : <a href="http://wordpress.org/">WordPress</a></p>
+		<p>Designed by : <span><a href="http://www.webdesignlessons.com/">WebDesignLessons.com</a></span></p>
+    </div>
+
+</div>
+
+
+		<?php wp_footer(); ?>
+
+
+</div>
 
 </body>
 </html>

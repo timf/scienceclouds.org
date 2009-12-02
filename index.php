@@ -1,52 +1,51 @@
 <?php get_header(); ?>
-<?php if (have_posts()) : ?>
-<?php while (have_posts()) : the_post(); ?>
-		
-<!--Start Post-->
-<div <?php post_class(); ?> style="margin-bottom: 40px;">
-      			
-<div class="p-head">
-<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-<p class="p-author">By: <?php the_author() ?></p>
-<p class="p-cat">Filed in: <?php the_category('|') ?></p>
-<small class="p-time">
-<strong class="day"><?php the_time('j') ?></strong>
-<strong class="month"><?php the_time('M') ?></strong>
-<strong class="year"><?php the_time('Y') ?></strong>
-</small>
-</div>
 
+	<div id="content" class="narrowcolumn">
 
-<div class="p-con">
-<?php the_content('Read the rest of this entry &raquo;'); ?>
-<div class="clear"></div>
-<?php wp_link_pages(); ?>
-<?php edit_post_link('Edit this entry.', '<p class="edit">', '</p>'); ?>
-</div>
+	<?php if (have_posts()) : ?>
 
+		<?php $i=0; while (have_posts()) : the_post(); $i++; ?>
 
-<div class="p-det">
- <ul>
-   <li class="p-det-com"><?php comments_popup_link('No Comments', '(1) Comment', '(%) Comments'); ?></li>
-  <?php if (function_exists('the_tags')) { ?> <?php the_tags('<li class="p-det-tag">Tags: ', ', ', '</li>'); ?> <?php } ?>
-</ul>
-</div>
+			<div class="post" id="post-<?php the_ID(); ?>">
+                <div class="post-top">
+                    <div class="post-title">
+                        <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a></h2>
+						<h3>
+							Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  Posted on <?php the_time('d-m-Y') ?>
+						</h3>
+						<h3>
+							<span class="post_cats"><?php the_tags(); ?></span>
+						</h3>
+                    </div>
+					<h4><?php comments_number('0', '1', '%'); ?></h4>
+                </div>
 
-</div>
-<!--End Post-->
+				<div class="entry">
+					<?php the_content('',FALSE,''); ?>
+				</div>
 
-				
-<?php //comments_template(); ?>
-				
-<?php endwhile; ?>
-<?php include("nav.php"); ?>
-<?php else : ?>
+                <div class="postmetadata">
+                	<a href="<?php the_permalink() ?>" >Continue reading...</a>
+                </div>
+			</div>
 
-<?php include("404.php"); ?>
-<?php endif; ?>
+		<?php endwhile; ?>
 
-<?php if (function_exists('trackTheme')) { ?>
- <?php trackTheme("Compositio");  ?>
-<?php } ?>
+		<div class="navigation">
+			<?php if(!function_exists('wp_pagenavi')) : ?>
+            <div class="alignleft"><?php next_posts_link('Previous') ?></div>
+            <div class="alignright"><?php previous_posts_link('Next') ?></div>
+            <?php else : wp_pagenavi(); endif; ?>
+		</div>
+
+	<?php else : ?>
+
+		<h2 class="center">Not Found</h2>
+		<p class="center">Sorry, but you are looking for something that isn't here.</p>
+		<?php include (TEMPLATEPATH . "/searchform.php"); ?>
+
+	<?php endif; ?>
+
+	</div>
 
 <?php get_footer(); ?>
