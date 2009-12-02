@@ -56,17 +56,6 @@
     </div>
 </div>
 
-<div id="board">
-	<div id="board_post">
-		<h3>Featured Post</h3>
-		<?php $recent = new WP_Query("showposts=1&orderby=rand"); while($recent->have_posts()) : $recent->the_post();?>
-		<h2><?php the_title_limited(70); ?></h2>
-		<p><?php the_content_limit(300); ?></p>
-		<p><a href="<?php the_permalink() ?>">Read More</a></p>
-		<?php endwhile; ?>
-	</div>
-</div>
-
 <div id="body">
 
 	<div id="body_left">
