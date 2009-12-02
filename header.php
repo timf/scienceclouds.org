@@ -65,9 +65,6 @@
 		<p><a href="<?php the_permalink() ?>">Read More</a></p>
 		<?php endwhile; ?>
 	</div>
-	<div id="board_twitter">
-		<p><a href="<?php echo theme_twitter_link_show(); ?>"><img src="<?php bloginfo('template_url')?>/images/button_twitter.png" alt="" /></a></p>
-	</div>
 </div>
 
 <div id="body">
