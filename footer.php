@@ -23,7 +23,7 @@
     </div>
 	<div id="footer_text">
     	<p>&copy; All Rights Reserved. <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a> | Powered by : <a href="http://wordpress.org/">WordPress</a></p>
-		<p>Designed by : <span><a href="http://www.webdesignlessons.com/">WebDesignLessons.com</a></span></p>
+		<p>Alteration of an original design by WebDesignLessons.com</p>
     </div>
 
 </div>
