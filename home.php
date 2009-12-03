@@ -6,6 +6,9 @@ Template Name: HomePage
 
 <?php get_header(); ?>
 
+    <div id="body_left">
+    <div id="body_left_content">
+
 	<div id="content" class="narrowcolumn">
 
 		<?php if (have_posts()) { ?>
@@ -14,7 +17,9 @@ Template Name: HomePage
 		<div class="post-page" id="post-<?php the_ID(); ?>">
 		
 		<?php if (is_front_page()) { echo '&nbsp;'; } else { ?>
-		    <h2 class="page_title"><?php the_title();?></h2>
+		    <h2 class="page_title">
+		    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a>
+		    </h2>
 		    <h3>
                 Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  <?php the_time('m-d-Y') ?>
                 |  <?php comments_number('No responses','One response','% responses'); ?>
@@ -52,33 +57,33 @@ Template Name: HomePage
     </div>
     
     <div id="body_right">
-        <div id="body_right_content">
+    <div id="body_right_content">
+
+        <?php if (is_front_page()) { ?>
+            
+            <div id="sidebarposts">
+                <h2>Recent Posts</h2>
+                <br>
+                
+                <?php $recent = new WP_Query("showposts=2"); while($recent->have_posts()) : $recent->the_post();?>
+                <h3><?php the_title_limited(70); ?></h3>
+                <br>
+                <p><?php the_content_limit(300); ?></p>
+                <br>
+                <p class="sidereadmore"><a href="<?php the_permalink() ?>">Read more</a>...</p>
+                <br>
+                <?php endwhile; ?>
+            </div>
     
-            <?php if (is_front_page()) { ?>
-                
-                <div id="sidebarposts">
-                    <h2>Recent Posts</h2>
-                    <br>
-                    
-                    <?php $recent = new WP_Query("showposts=2"); while($recent->have_posts()) : $recent->the_post();?>
-                    <h3><?php the_title_limited(70); ?></h3>
-                    <br>
-                    <p><?php the_content_limit(300); ?></p>
-                    <br>
-                    <p class="sidereadmore"><a href="<?php the_permalink() ?>">Read more</a>...</p>
-                    <br>
-                    <?php endwhile; ?>
-                </div>
-        
-            <?php } else { ?>
-                
-                <div id="sidebars">
-                    <?php get_sidebar(); ?>
-                </div>
-        
-            <?php } ?>
-                 
-        </div>
+        <?php } else { ?>
+            
+            <div id="sidebars">
+                <?php get_sidebar(); ?>
+            </div>
+    
+        <?php } ?>
+             
+    </div>
     </div>   
     
 

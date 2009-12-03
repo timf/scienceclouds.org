@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+    <div id="body_left">
+    <div id="body_left_content">
+
 	<div id="content" class="narrowcolumn">
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

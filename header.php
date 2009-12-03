@@ -52,7 +52,4 @@
 </div>
 
 <div id="body">
-
-	<div id="body_left">
-    	<div id="body_left_content">
     	
