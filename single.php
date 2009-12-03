@@ -32,5 +32,17 @@
 <?php endif; ?>
 
 	</div>
+	
+	</div>
+    </div>
+    <div id="body_right">
+      <div id="body_right_content">
+            
+            <div id="sidebars">
+                <?php get_sidebar(); ?>
+            </div>
+            
+        </div>
+    </div>
 
 <?php get_footer(); ?>

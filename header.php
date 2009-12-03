@@ -34,7 +34,6 @@
 	<div id="top_rss"><a href="<?php bloginfo('rss2_url'); ?>" title="Rss"><img src="<?php bloginfo('template_url')?>/images/rss-science.jpg" alt="<?php bloginfo('name'); ?> Rss" /></a></div>
 	<div id="mainmenu">
 		<ul>
-			<li class="first <? if(is_home()) echo 'current_page_item'; ?>"><a href="<?php echo get_option('home'); ?>/">Home</a></li>
 			<?php $exclude = obwp_get_meta(SHORTNAME.'_exclude_page'); wp_list_pages2('title_li=&sort_column=menu_order&depth=0&exclude='.$exclude) ?>
 		</ul>
 	</div>
@@ -54,3 +53,4 @@
 
 	<div id="body_left">
     	<div id="body_left_content">
+    	

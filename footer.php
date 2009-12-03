@@ -1,17 +1,4 @@
 
-            
-        </div>
-    </div>
-
-	<div id="body_right">
-    	<div id="body_right_content">
-            
-            <div id="sidebars">
-                <?php get_sidebar(); ?>
-            </div>
-            
-        </div>
-    </div>
     
 </div> <!-- end #body -->
 </div> <!-- end #nonFooter -->
