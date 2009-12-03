@@ -11,7 +11,7 @@
                     <div class="post-title">
                         <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a></h2>
 						<h3>
-							Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  Posted on <?php the_time('d-m-Y') ?>
+							Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  <?php the_time('d-m-Y') ?>
 							|  <?php comments_number('No responses','One response','% responses'); ?>
 						</h3>
 						<h3>

@@ -15,13 +15,13 @@ Template Name: HomePage
 		
 		<?php if (is_front_page()) { echo '&nbsp;'; } else { ?>
 		    <h2 class="page_title"><?php the_title();?></h2>
-		    <p class="p-author">By: <?php the_author() ?></p>
-            <p class="p-cat">Filed in: <?php the_category('|') ?></p>
-            <small class="p-time">
-            <strong class="month"><?php the_time('M') ?></strong>
-            <strong class="day"><?php the_time('j') ?></strong>
-            <strong class="year"><?php the_time('Y') ?></strong>
-            </small>
+		    <h3>
+                Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  <?php the_time('m-d-Y') ?>
+                |  <?php comments_number('No responses','One response','% responses'); ?>
+            </h3>
+            <h3>
+                <span class="post_cats"><?php the_tags(); ?></span>
+            </h3>
 		<?php } ?>
 		
 			<div class="entry entry_page">
@@ -51,22 +51,35 @@ Template Name: HomePage
     </div>
     </div>
     
-    <?php if (is_front_page()) { echo '&nbsp;'; } else { ?>
-		    
+    <div id="body_right">
+        <div id="body_right_content">
+    
+            <?php if (is_front_page()) { ?>
+                
+                <div id="sidebarposts">
+                    <h2>Recent Posts</h2>
+                    <br>
+                    
+                    <?php $recent = new WP_Query("showposts=2"); while($recent->have_posts()) : $recent->the_post();?>
+                    <h3><?php the_title_limited(70); ?></h3>
+                    <br>
+                    <p><?php the_content_limit(300); ?></p>
+                    <br>
+                    <p class="sidereadmore"><a href="<?php the_permalink() ?>">Read more</a>...</p>
+                    <br>
+                    <?php endwhile; ?>
+                </div>
         
-        <div id="body_right">
-          <div id="body_right_content">
+            <?php } else { ?>
                 
                 <div id="sidebars">
                     <?php get_sidebar(); ?>
                 </div>
-                
-            </div>
+        
+            <?php } ?>
+                 
         </div>
-        
-        
-    <?php } ?>
-    
+    </div>   
     
 
 <?php get_footer(); ?>

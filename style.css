@@ -180,10 +180,11 @@ body{
 	font-size:48px;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:30px 0 0 36px;
-	letter-spacing:-4px;
+	letter-spacing:-2px;
 	font-weight:normal;
-	text-transform:uppercase;
+	/*text-transform:lowercase;*/
 }
+/*
 #header_title span{
 	color:#fff;
 	font-size:14px;
@@ -191,8 +192,9 @@ body{
 	padding:30px 0 0 56px;
 	letter-spacing:0px;
 	font-weight:normal;
-	text-transform:uppercase;
+	text-transform:lowercase;
 }
+*/
 #header_title h1 a{
 	color:#fff;
 }
@@ -501,6 +503,22 @@ h2.page_title{
 
 .sidebars .textwidget{
 	padding:10px;
+}
+
+/* SIDEBAR POSTS (HOME PAGE) */
+
+#sidebarposts {
+    margin-top: 2.2em;
+    margin-left: 3em;
+    font-size: 1.3em;
+}
+
+#sidebarposts h2 {
+	text-decoration:underline;
+}
+
+.sidereadmore {
+	font-style: italic;
 }
 
 /* FOOTER */
