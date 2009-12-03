@@ -16,7 +16,7 @@ Template Name: HomePage
 		<?php while (have_posts()) { the_post(); ?>
 		<div class="post-page" id="post-<?php the_ID(); ?>">
 		
-		<?php if (is_front_page()) { echo '&nbsp;'; } else { ?>
+		<?php if (is_front_page()) { echo ' '; } else { ?>
 		    <h2 class="page_title">
 		    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a>
 		    </h2>

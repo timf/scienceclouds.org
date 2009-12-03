@@ -13,8 +13,9 @@
             </h2>
         </div>
         <div id="footer_text">
-            <p>&copy; University of Chicago</p>
-            <p>Powered by <a href="http://wordpress.org/">WordPress</a></p>
+            <p>&copy; University of Chicago<br>
+            Powered by <a href="http://wordpress.org/">WordPress</a></p>
+            <p>&nbsp;</p>
         </div>
     </div>
 </div>
