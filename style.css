@@ -180,9 +180,9 @@ body{
 	font-size:48px;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:30px 0 0 36px;
-	letter-spacing:-2px;
+	letter-spacing:-1px;
 	font-weight:normal;
-	/*text-transform:lowercase;*/
+	text-transform:uppercase;
 }
 /*
 #header_title span{
@@ -594,7 +594,8 @@ h2.page_title{
 	}
 
 #wp-calendar a {
-	text-decoration: none;
+	text-decoration: underline;
+	font-weight: bold;
 	}
 
 #wp-calendar caption {
