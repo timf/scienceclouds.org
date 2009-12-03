@@ -28,7 +28,7 @@
 
 <body>
 <div id="page">
-
+<div id="nonFooter">
 <div id="menu">
     <!-- rss beaker image courtesy: http://www.freesocialicons.com/free-lab-experiment-social-icon-set/ -->
 	<div id="top_rss"><a href="<?php bloginfo('rss2_url'); ?>" title="Rss"><img src="<?php bloginfo('template_url')?>/images/rss-science.jpg" alt="<?php bloginfo('name'); ?> Rss" /></a></div>
