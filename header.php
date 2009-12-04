@@ -10,18 +10,19 @@
 
 <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats -->
 
-<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
-<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
+<link rel="stylesheet" href="http://www.scienceclouds.org/wp-content/themes/theme-virtualization/style.css" type="text/css" media="screen" />
+
+<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="http://www.scienceclouds.org/feed/" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <!--[if IE ]>
-<link rel="stylesheet" href="<?=bloginfo('template_url')?>/style-ie.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://www.scienceclouds.org/wp-content/themes/theme-virtualization/style-ie.css" type="text/css" media="screen" />
 <script type="text/javascript">
-	var png_trans = "<?=bloginfo('template_url')?>/images/transparent.gif";
+	var png_trans = "http://www.scienceclouds.org/wp-content/themes/theme-virtualization//images/transparent.gif";
 </script>
 <![endif]-->
 <!-- Main Menu -->
-	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.min.1.2.6.js"></script>
-	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jqueryslidemenu/jqueryslidemenu.js"></script>
+	<script type="text/javascript" src="http://www.scienceclouds.org/wp-content/themes/theme-virtualization/js/jquery.min.1.2.6.js"></script>
+	<script type="text/javascript" src="http://www.scienceclouds.org/wp-content/themes/theme-virtualization/js/jqueryslidemenu/jqueryslidemenu.js"></script>
 	<!-- /Main Menu -->
 <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 
@@ -33,7 +34,7 @@
 <div id="nonFooter">
 <div id="menu">
     <!-- rss beaker image courtesy: http://www.freesocialicons.com/free-lab-experiment-social-icon-set/ -->
-	<div id="top_rss"><a href="<?php bloginfo('rss2_url'); ?>" title="Rss"><img src="<?php bloginfo('template_url')?>/images/rss-science.jpg" alt="<?php bloginfo('name'); ?> Rss" /></a></div>
+	<div id="top_rss"><a href="http://www.scienceclouds.org/feed/" title="Rss"><img src="http://www.scienceclouds.org/wp-content/themes/theme-virtualization/images/rss-science.jpg" alt="<?php bloginfo('name'); ?> Rss" /></a></div>
 	<div id="mainmenu">
 		<ul>
 			<?php $exclude = obwp_get_meta(SHORTNAME.'_exclude_page'); wp_list_pages2('title_li=&sort_column=menu_order&depth=0&exclude='.$exclude) ?>

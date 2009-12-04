@@ -713,6 +713,7 @@ img.alignleft {
 	empty-cells: show;
 	margin: 10px auto 0;
 	width: 98%;
+	font-size: 1em;
 	}
 
 #wp-calendar #next a {
@@ -726,8 +727,9 @@ img.alignleft {
 	}
 
 #wp-calendar a {
-	display: block;
-	}
+	text-decoration: underline;
+    font-weight: bold;
+}
 
 #wp-calendar caption {
 	text-align: center;
