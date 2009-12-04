@@ -560,6 +560,19 @@ h2.page_title{
     list-style-type:circle;
 }
 
+#toc_left_content h2 {
+    color:#736f6e;
+}
+
+#toc_left_content ul {
+    padding-left: 1.4em;
+}
+
+#toc_left_content ul li {
+    padding-top: 1em;
+    list-style-type:circle;
+}
+
 /* FOOTER */
 
 #footer{
