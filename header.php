@@ -44,7 +44,7 @@
 
 <div id="header">
 	<div id="header_title">
-        <h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+	<h1><a href="http://www.scienceclouds.org/"><?php bloginfo('name'); ?></a></h1>
 		<!-- <span><?php bloginfo('description'); ?></span> -->
     </div>
 	<div id="header_right">
