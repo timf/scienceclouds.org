@@ -21,7 +21,7 @@ Template Name: HomePage
 		    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title(); ?></a>
 		    </h2>
 		    <h3>
-                Posted by <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  <?php the_time('m-d-Y') ?>
+                By <span><?php the_author() ?></span>  |  Posted in <span><?php the_category(', ') ?></span>  |  <?php the_time('m-d-Y') ?>
                 |  <?php comments_number('No responses','One response','% responses'); ?>
             </h3>
             <h3>
@@ -36,7 +36,7 @@ Template Name: HomePage
 
 				<?php edit_post_link('Edit this entry.', '<br /><p>', '</p>'); ?>
 				
-				<?php if (is_front_page()) { echo '&nbsp;'; } else { ?>
+				<?php if (is_front_page()) { echo ' '; } else { ?>
 				
 				<div class="p-det">
                  <ul>
@@ -62,11 +62,15 @@ Template Name: HomePage
         <?php if (is_front_page()) { ?>
             
             <div id="sidebarposts">
-                <h2>Recent Posts</h2>
+                <h2><a href="/blog/">Recent Posts</a></h2>
                 <br>
                 
                 <?php $recent = new WP_Query("showposts=2"); while($recent->have_posts()) : $recent->the_post();?>
-                <h3><?php the_title_limited(70); ?></h3>
+                
+                <h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php if ( function_exists('the_title_attribute')) the_title_attribute(); else the_title(); ?>"><?php the_title_limited(70); ?></a></h3>
+                <br>
+                By <span><?php the_author() ?></span>
+                <br>
                 <br>
                 <p><?php the_content_limit(300); ?></p>
                 <br>

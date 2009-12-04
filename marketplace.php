@@ -1,13 +1,20 @@
 <?php
 /*
-Template Name: ScienceCloudPage
+Template Name: Marketplace
 */
 ?>
 
 <?php get_header(); ?>
 
-    <div id="body_left">
-    <div id="body_left_content">
+    <div id="toc_left">
+        <div id="toc_left_content">
+        
+            hello ONE
+        </div>
+    </div>
+
+    <div id="toc_right">
+    <div id="toc_right_content">
 
 	<div id="content" class="narrowcolumn">
 

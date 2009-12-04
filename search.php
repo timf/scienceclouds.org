@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+    <div id="body_left">
+    <div id="body_left_content">
+    
 	<div id="content" class="narrowcolumn">
 
 	<?php if (have_posts()) :  ?>
@@ -43,5 +46,15 @@
 	<?php endif; ?>
 
 	</div>
+	
+	</div>
+	</div>
+	<div id="body_right">
+    <div id="body_right_content">
+        <div id="sidebars">
+            <?php get_sidebar(); ?>
+        </div>
+    </div>
+    </div>
 
 <?php get_footer(); ?>

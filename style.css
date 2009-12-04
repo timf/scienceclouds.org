@@ -221,10 +221,24 @@ body{
 	float:right;
 }
 
+#toc_left{
+	width:283px;
+	float:left;
+}
+#toc_right{
+	width:717px;
+	float:right;
+}
+
 /* left contact */
 
 #body_left_content{
 	width:638px;
+	padding:0 0 0 44px;
+}
+
+#toc_left_content{
+	width:204px;
 	padding:0 0 0 44px;
 }
 
@@ -396,6 +410,10 @@ h2.page_title{
 
 #body_right_content{
 }
+
+#toc_right_content{
+}
+
 /* SIDE BAR */
 
 #sidebar{
@@ -513,13 +531,34 @@ h2.page_title{
     font-size: 1.3em;
 }
 
-#sidebarposts h2 {
-	text-decoration:underline;
+#sidebarposts h2 a {
+	text-decoration:none;
+	color:#736f6e;
 }
 
 .sidereadmore {
 	font-style: italic;
     margin-bottom: 1em;
+	text-decoration:underline;
+}
+
+#sc_right_listing {
+    margin-top: 2.2em;
+    margin-left: 3em;
+    font-size: 1.4em;
+}
+
+#sc_right_listing h2 {
+    color:#736f6e;
+}
+
+#sc_right_listing ul {
+    padding-left: 1.4em;
+}
+
+#sc_right_listing ul li {
+    padding-top: 1.4em;
+    list-style-type:circle;
 }
 
 /* FOOTER */
