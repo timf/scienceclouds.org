@@ -206,7 +206,6 @@ body{
 
 #body{
 	width:100%;
-	background:url(images/bgr_body.gif) repeat-y right;
 	overflow:hidden;
 	padding:0 0 40px 0;
 }
