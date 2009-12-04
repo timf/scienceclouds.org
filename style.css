@@ -658,6 +658,13 @@ h2.page_title{
 	font-style: normal;
 	text-transform: capitalize;
 	}
+	
+.imgdesc table tr td {
+    font-size: small;
+}
+	
+	
+	
 /* End Typography & Colors */
 
 
