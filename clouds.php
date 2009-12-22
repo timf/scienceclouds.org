@@ -39,7 +39,7 @@ Template Name: AvailableClouds
         <div id="sc_right_listing">
             <h2>Links to the Clouds</h2>
             <ul>
-                <li><a href="http://workspace.globus.org/clouds/nimbus.html">Nimbus @ University of Chicago</a></li>
+                <li><a href="http://www.nimbusproject.org/nimbus_cloud">Nimbus @ University of Chicago</a></li>
                 <li><a href="http://www.acis.ufl.edu/vws/">Stratus @ University of Florida</a></li>
                 <li><a href="http://www.rcac.purdue.edu/teragrid/resources/#wispy">Wispy @ Purdue University</a></li>
                 <li><a href="http://meta.cesnet.cz/cms/opencms/en/docs/clouds">Kupa @ Masaryk University</a></li>
