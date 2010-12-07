@@ -40,7 +40,7 @@ Template Name: HomePage
 				
 				<div class="p-det">
                  <ul>
-                   <li class="p-det-com"><?php comments_popup_link('No responses', 'One response', '(%) responses'); ?></li>
+                   <li class="p-det-com"><?php comments_popup_link('Leave a response', 'Leave a response', 'Leave a response'); ?></li>
                   <?php if (function_exists('the_tags')) { ?> <?php the_tags('<li class="p-det-tag">Tags: ', ', ', '</li>'); ?> <?php } ?>
                 </ul>
                 </div>
