@@ -840,6 +840,16 @@ a img {
 	Special stylized non-IE bullets
 	Do not work in Internet Explorer, which merely default to normal bullets. */
 
+.entry ul {
+	margin: 0 10px 25px 5px;
+	list-style: disc;
+	padding:15px 15px 15px 20px;
+	} 
+.entry ul li {
+	padding:6px 0 6px 11px;
+}
+
+
 .entry ol {
 	margin: 0 10px 25px 5px;
 	padding:15px 15px 15px 40px;
