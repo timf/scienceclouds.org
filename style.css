@@ -848,7 +848,11 @@ a img {
 .entry ul li {
 	padding:6px 0 6px 11px;
 }
-
+.entry ul li a {
+    color: #52699F;
+    font-weight: bold;
+    text-decoration: underline;   
+}
 
 .entry ol {
 	margin: 0 10px 25px 5px;
