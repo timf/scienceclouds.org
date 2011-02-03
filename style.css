@@ -372,7 +372,6 @@ h2.page_title{
 }
 
 .post-page .entry strong{
-	font-size:28px;
 }
 
 .post-page .entry h1{
@@ -404,6 +403,14 @@ h2.page_title{
 	font-size:16px;
 	padding:0 0 6px 0;
 } 
+
+.post-page .p-det {
+    font-size:1.2em;
+}
+
+.post-page .p-det ul {
+    list-style: none;
+}
 
 /* right content */
 
